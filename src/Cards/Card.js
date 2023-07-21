@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { deleteCard, readCard } from "../utils/api";
+import { deleteCard } from "../utils/api";
 import { useHistory, Link } from 'react-router-dom';
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useEffect } from "react";
@@ -12,7 +12,7 @@ export const Card = (({cardInfo, cardId}) => {
 
   useEffect(() => {
     setCard(cardInfo)
-  })
+  }, [cardInfo])
 
   const handleDelete = async () => {
     const confirm = window.confirm("Delete this deck? You will not be able to recover it.");
