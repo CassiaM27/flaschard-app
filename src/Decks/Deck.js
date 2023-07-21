@@ -39,7 +39,7 @@ export const Deck = () => {
   };
 
   const cardsInDeck = cards.map((card) => (
-    <Card key={card.id} deckId={deck.id} cardId={card.id} />
+    <Card key={card.id} deckId={deckId} cardId={card.id} cardInfo={card} />
   ));
 
   return (
@@ -52,27 +52,36 @@ export const Deck = () => {
       </nav>
       <h3 className="display-4 my-3 col-9">{deck.name}</h3>
       <p className="mb-3">{deck.description}</p>
-      <div className="d-grid gap-2">
+      <div className="d-grid gap-2 col-12">
+        <Link
+          to={`/decks/${deckId}/edit`}
+          type="button"
+          className="btn btn-secondary mr-2"
+        >
+          Edit
+        </Link>
         <Link
           to={`/decks/${deckId}/study`}
           type="button"
           className="btn btn-primary mr-2"
         >
-          Study
+          <span className="oi oi-book"></span>
+          &nbsp;Study
         </Link>
         <Link
           to={`/decks/${deckId}/cards/new`}
           type="button"
-          className="btn btn-primary mr-2"
+          className="btn btn-primary"
         >
-          Add Cards
+          <span className="oi oi-plus"></span>
+          &nbsp;Add Cards
         </Link>
-        <button type="button" onClick={handleDelete} className="btn btn-danger">
-          Delete Deck
+        <button type="button" onClick={handleDelete} className="btn btn-danger float-right mr-2">
+          <span className="oi oi-trash"></span>
         </button>
       </div>
       <br />
-      <ul className="list-group">{cardsInDeck}</ul>
+      <ul className="list-group col-12">{cardsInDeck}</ul>
     </article>
   )
 };

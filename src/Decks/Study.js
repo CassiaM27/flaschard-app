@@ -64,7 +64,7 @@ export const Study = (() => {
             <p>&nbsp;/ Study</p>
           </div>
         </nav>
-        <h1>Study: {deck.name}</h1>
+        <h1>{deck.name}<span>: Study</span></h1>
         <h3>Not Enough Cards.</h3>
         <p>You need at least 3 cards to study.  There are {cards.length} cards in this deck.</p>
         <Link
@@ -87,7 +87,7 @@ export const Study = (() => {
             <p>&nbsp;/ Study</p>
           </div>
         </nav>
-        <h1>Study: {deck.name}</h1>
+        <h1><span>{deck.name}: Study</span></h1>
         <div className="border">
           {/* 
             display card based on current cardIndex

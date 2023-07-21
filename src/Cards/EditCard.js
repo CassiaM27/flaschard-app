@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { readDeck, readCard } from "../utils/api";
 import { useParams, Link } from 'react-router-dom';
+import CardForm from "./CardForm";
 
 export const EditCard = () => {
     
@@ -8,17 +9,6 @@ export const EditCard = () => {
   const [deck, setDeck] = useState({});
 
   const [formData, setFormData] = useState({});
-  const handleChange = ({ target }) => {
-    setFormData({
-      ...formData,
-      [target.name]: target.value,
-    });
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Submitted:", formData);
-  };
 
   useEffect(() => {
     const deckAbort = new AbortController();
@@ -63,50 +53,10 @@ export const EditCard = () => {
     </nav>
     <h1 className="pt-2 col-12">Edit Card</h1>
     <div className="pt-2 col-12">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="front" className="mb-3">Front</label>
-        <br />
-        <textarea
-          className="px-2"
-          id="front"
-          type="text"
-          name="front"
-          onChange={handleChange}
-          value={formData.front}
-          required={true}
-          rows={4}
-          cols={60}
-        />
-        <br />
-        <label htmlFor="back" className="my-2">Back</label>
-        <br />
-        <textarea
-          className="px-2"
-          id="back"
-          type="textarea"
-          name="back"
-          onChange={handleChange}
-          value={formData.back}
-          required={true}
-          rows={4}
-          cols={60}
-        />
-        <br />
-        <Link
-          to={`/decks/:deckId`}
-          type="button"
-          className="btn btn-secondary mr-2"
-        >
-          Cancel
-        </Link>
-        <Link
-          to={`/decks/:deckId`}
-          type="button"
-          className="btn btn-primary mr-2"
-        >
-          Submit
-        </Link>
-      </form>
+      <CardForm
+        initialFormState={formData}
+        deckId={deckId}
+      />
     </div>
   </div>
   )
