@@ -8,12 +8,6 @@ export const List = () => {
   const [decks, setDecks] = useState([]);
   const [submitted, setSubmitted] = useState(false);
 
-  function submit () {
-    if(submitted === true) {
-      setSubmitted(false)
-    }
-  }
-
   useEffect(() => {
     const deckAbort = new AbortController();
 
