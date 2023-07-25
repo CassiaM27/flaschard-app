@@ -24,7 +24,6 @@ export const List = () => {
       }
     }
     loadDecks();
-    //submit();
   }, [submitted])
   
   const handleDelete = async (deck) => {
@@ -33,7 +32,6 @@ export const List = () => {
       await deleteDeck(deck.id);
       setSubmitted(!submitted);
     }
-    //window.location.reload(true) // <-- not a good way to do this, but it works
   };
 
   const allDecks = decks.map((deck) => {
