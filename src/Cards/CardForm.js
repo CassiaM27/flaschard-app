@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 export const CardForm = ({initialFormState, deckId}) => {
     
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({...initialFormState});
     const {cardId} = useParams();
 
     const handleChange = ({ target }) => {
@@ -14,10 +14,6 @@ export const CardForm = ({initialFormState, deckId}) => {
         [target.name]: target.value,
       });
     }
-  
-    useEffect(() => {
-      setFormData(initialFormState)
-    })
 
   const handleSubmit = (event) => {
       event.preventDefault();
@@ -35,7 +31,7 @@ export const CardForm = ({initialFormState, deckId}) => {
         }
       }
       makeCard();
-      setFormData({initialFormState});
+      setFormData(initialFormState);
       console.log("Submitted:", formData);
     };
 
