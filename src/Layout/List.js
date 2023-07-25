@@ -30,14 +30,14 @@ export const List = () => {
       }
     }
     loadDecks();
-    submit();
+    //submit();
   }, [submitted])
   
   const handleDelete = async (deck) => {
     const confirm = window.confirm("Delete this deck? You will not be able to recover it.");
     if (confirm) {
       await deleteDeck(deck.id);
-      submitted(deck)
+      setSubmitted(!submitted);
     }
     //window.location.reload(true) // <-- not a good way to do this, but it works
   };
